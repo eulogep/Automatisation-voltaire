@@ -1,0 +1,31 @@
+2026-02-11 11:06:19,991 - INFO - MODE DEBUG: Lancement immediat
+2026-02-11 11:06:20,628 - INFO - Demarrage moteur Stealth (Playwright)...
+2026-02-11 11:06:21,193 - INFO - Tentative de connexion: ton_email
+2026-02-11 11:06:42,007 - ERROR - Echec connexion (URL ou identifiants incorrects)
+2026-02-11 11:06:42,680 - INFO - Moteur arrete.
+2026-02-11 11:08:16,590 - INFO - MODE DEBUG: Lancement immediat
+2026-02-11 11:08:17,248 - INFO - Demarrage moteur Stealth (Playwright)...
+2026-02-11 11:08:17,804 - INFO - Tentative de connexion: mabiala@et.esiea.fr
+2026-02-11 11:08:38,699 - ERROR - Erreur critique lors de la connexion: Page.fill: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("input[name='password'], input[type='password'], #password")
+
+2026-02-11 11:08:39,280 - INFO - Moteur arrete.
+2026-02-11 11:08:44,035 - INFO - MODE DEBUG: Lancement immediat
+2026-02-11 11:08:44,657 - INFO - Demarrage moteur Stealth (Playwright)...
+2026-02-11 11:08:45,189 - INFO - Tentative de connexion: mabiala@et.esiea.fr
+2026-02-11 11:09:05,866 - ERROR - Erreur critique lors de la connexion: Page.fill: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("input[name='password'], input[type='password'], #password")
+
+2026-02-11 11:09:07,209 - INFO - Moteur arrete.
+2026-02-11 11:09:10,016 - INFO - MODE DEBUG: Lancement immediat
+2026-02-11 11:09:10,692 - INFO - Demarrage moteur Stealth (Playwright)...
+2026-02-11 11:09:11,385 - INFO - Tentative de connexion: mabiala@et.esiea.fr
+2026-02-11 11:09:34,783 - ERROR - Echec connexion (URL ou identifiants incorrects)
+2026-02-11 11:09:35,458 - INFO - Moteur arrete.
+2026-02-11 11:10:44,729 - INFO - MODE DEBUG: Lancement immediat
+2026-02-11 11:10:45,460 - INFO - Demarrage moteur Stealth (Playwright)...
+2026-02-11 11:10:46,339 - INFO - Tentative de connexion: mabiala@et.esiea.fr
+2026-02-11 11:11:02,663 - ERROR - Echec connexion (URL ou identifiants incorrects)
+2026-02-11 11:11:03,328 - INFO - Moteur arrete.
