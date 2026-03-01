@@ -30,15 +30,16 @@ class VoltaireBot:
         
         logger.info("Sélection de l'univers 2025-2026...")
         try:
-            # Cliquer sur le texte directement
-            btns = self.page.query_selector_all("text=ACCÉDER À L'UNIVERS")
-            if len(btns) >= 2:
-                btns[1].click()
+            # Essayer de cliquer sur le texte directement
+            btns = self.page.query_selector_all("button")
+            for b in btns:
+                if "ACCÉDER" in b.inner_text() and "UNIVERS" in b.inner_text():
+                    # Si on en trouve plusieurs, on prend le dernier (2025-2026)
+                    last_btn = b
+            if last_btn:
+                last_btn.click()
                 logger.info("Bouton cliqué.")
                 time.sleep(10)
-                return True
-            elif len(btns) == 1:
-                btns[0].click()
                 return True
         except: pass
         return False

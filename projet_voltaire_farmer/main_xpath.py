@@ -29,12 +29,12 @@ class VoltaireBot:
         time.sleep(5)
         
         logger.info("Sélection de l'univers 2025-2026...")
+        # Sélection par XPath pour éviter les problèmes de CSS
         try:
-            # Cliquer sur le texte directement
-            btns = self.page.query_selector_all("text=ACCÉDER À L'UNIVERS")
+            btns = self.page.query_selector_all("//button[contains(text(), 'ACCÉDER')]")
             if len(btns) >= 2:
                 btns[1].click()
-                logger.info("Bouton cliqué.")
+                logger.info("Bouton cliqué par XPath.")
                 time.sleep(10)
                 return True
             elif len(btns) == 1:
@@ -48,7 +48,7 @@ class VoltaireBot:
         try:
             self.page.click(f"text={module_name}", timeout=15000)
             time.sleep(5)
-            # Bouton de démarrage
+            # Cliquer sur n'importe quel bouton qui ressemble à un démarrage
             btns = self.page.query_selector_all("button, a")
             for b in btns:
                 t = b.inner_text().lower()
@@ -65,30 +65,24 @@ class VoltaireBot:
         end_time = time.time() + (CONFIG["SESSION_DURATION_MIN"] * 60)
         while time.time() < end_time:
             try:
-                # Stratégie de clic sur les mots
+                # Chercher des mots ou le bouton "Pas de faute"
                 words = self.page.query_selector_all("span.word, .point-and-click span")
                 if words:
                     random.choice(words).click()
-                    logger.info("Action : Mot cliqué.")
+                    logger.info("Mot cliqué.")
                 else:
                     btn = self.page.query_selector("text=faute")
-                    if btn: 
-                        btn.click()
-                        logger.info("Action : 'Pas de faute' cliqué.")
+                    if btn: btn.click()
                 
                 time.sleep(2)
                 # Valider
                 v = self.page.query_selector("button:has-text('Valider'), button:has-text('OK')")
-                if v: 
-                    v.click()
-                    logger.info("Action : Validation envoyée.")
+                if v: v.click()
                 
                 time.sleep(3)
                 # Suivant
                 s = self.page.query_selector("button:has-text('Suivant'), button:has-text('Continuer')")
-                if s: 
-                    s.click()
-                    logger.info("Action : Passage au suivant.")
+                if s: s.click()
             except: time.sleep(2)
 
 def run():

@@ -30,17 +30,18 @@ class VoltaireBot:
         
         logger.info("Sélection de l'univers 2025-2026...")
         try:
-            # Cliquer sur le texte directement
-            btns = self.page.query_selector_all("text=ACCÉDER À L'UNIVERS")
+            # XPath pour trouver les boutons contenant le texte exact
+            btns = self.page.query_selector_all("//button[contains(., \"ACCÉDER À L'UNIVERS\")]")
             if len(btns) >= 2:
                 btns[1].click()
-                logger.info("Bouton cliqué.")
+                logger.info("Bouton d'univers cliqué.")
                 time.sleep(10)
                 return True
             elif len(btns) == 1:
                 btns[0].click()
                 return True
-        except: pass
+        except Exception as e:
+            logger.error(f"Erreur sélection univers : {e}")
         return False
 
     def start_module(self, module_name):
@@ -48,7 +49,7 @@ class VoltaireBot:
         try:
             self.page.click(f"text={module_name}", timeout=15000)
             time.sleep(5)
-            # Bouton de démarrage
+            # Cliquer sur le bouton de démarrage
             btns = self.page.query_selector_all("button, a")
             for b in btns:
                 t = b.inner_text().lower()
@@ -65,7 +66,7 @@ class VoltaireBot:
         end_time = time.time() + (CONFIG["SESSION_DURATION_MIN"] * 60)
         while time.time() < end_time:
             try:
-                # Stratégie de clic sur les mots
+                # Chercher des mots ou le bouton "Pas de faute"
                 words = self.page.query_selector_all("span.word, .point-and-click span")
                 if words:
                     random.choice(words).click()
